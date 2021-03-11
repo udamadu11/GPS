@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import dashboard from './src/screens/searchScreen';
+import App from './src/App';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => dashboard);
+AppRegistry.registerComponent(appName, () => App);

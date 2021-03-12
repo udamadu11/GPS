@@ -1,7 +1,9 @@
 import React from 'react';
-import VehicleList from './screens/vehicleList';
+import Icon from './component/icon';
+import AccountScreen from './screens/accountScreen';
+
 function App() {
-    return <VehicleList />
+    return <AccountScreen />
 }
 
 export default App;

@@ -1,15 +1,18 @@
 import React from 'react';
-import {View,StyleSheet, Image, Text} from 'react-native';
+import {View,StyleSheet, Image, Text, TouchableHighlight} from 'react-native';
 
-function renderList({img,emeiNo,vehicleNo}) {
+function renderList({img,imageComponent,title,subtitle,onPress}) {
     return (
-        <View style={styles.container}>
-            <Image source={img} style={styles.imageStyle} />
-            <View style={styles.sectionStyle}>
-                <Text style={styles.vehicleStyle}>{vehicleNo}</Text>
-                <Text style={{color:'#828073'}}>{emeiNo}</Text>
+        <TouchableHighlight onPress={onPress} underlayColor='#DAF4F5'>
+            <View style={styles.container}>
+                {imageComponent}
+               {img && <Image source={img} style={styles.imageStyle} />}
+                <View style={styles.sectionStyle}>
+                    <Text style={styles.titleStyle}>{title}</Text>
+                   { subtitle && <Text style={{color:'#828073'}}>{subtitle}</Text>}
+                </View>
             </View>
-        </View>
+        </TouchableHighlight>
     );
 }
 
@@ -25,9 +28,10 @@ const styles = StyleSheet.create({
     },
     sectionStyle:{
         marginLeft:10,
-        alignSelf:'center'
+        alignSelf:'center',
+        justifyContent: 'center'
     },
-    vehicleStyle:{
+    titleStyle:{
         fontWeight:"800"
     }
 });

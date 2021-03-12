@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, FlatList, SafeAreaView,Platform,StatusBar} from 'react-native';
+import { useState } from 'react';
+import {StyleSheet, FlatList, SafeAreaView,Platform,StatusBar, View} from 'react-native';
 import RenderList from '../component/renderList';
 const vehicle = [
     {
@@ -23,7 +24,7 @@ const vehicle = [
 ]
 
 function vehicleList() {
-    
+    const[refreshing,setRefresh] = useState(false);
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
@@ -31,10 +32,16 @@ function vehicleList() {
                 keyExtractor={vehicle=>vehicle.id.toString()}
                 renderItem={({item})=>
                 <RenderList
-                    vehicleNo ={item.vehicle_no}
-                    emeiNo = {item.EMEI_no}
-                    img = {item.image} 
+                    title ={item.vehicle_no}
+                    subtitle = {item.EMEI_no}
+                    img = {item.image}
+                    onPress={()=> console.log("selected",item.id)}
                 />}
+                ItemSeparatorComponent={()=>
+                    <View style={{backgroundColor:'#DAF4F5',height:1,width:'90%',marginLeft:10,marginRight:10}}/>
+                }
+                refreshing={refreshing}
+                onRefresh={()=>{} }
             />
         </SafeAreaView>
     );
@@ -42,7 +49,8 @@ function vehicleList() {
 
 const styles = StyleSheet.create({
     container : {
-        paddingTop : Platform.OS === 'android' ? StatusBar.currentHeight : 0
+        paddingTop : Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        flex:1
     }
 })
 export default vehicleList;

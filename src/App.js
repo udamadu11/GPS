@@ -1,9 +1,13 @@
 import React from 'react';
-import Icon from './component/icon';
-import AccountScreen from './screens/accountScreen';
+import InputText from './component/InputText';
 
 function App() {
-    return <AccountScreen />
+    return (
+        <>
+        <InputText placeholder="user Name" icon='email' />
+        <InputText placeholder="user Name" icon='email' />
+        </>
+    )
 }
 
 export default App;

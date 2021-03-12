@@ -1,10 +1,9 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { TextInput,Button } from 'react-native-paper';
 
 function searchScreen(props) {
-    const [text, setText] = React.useState('');
-    
+    const [text, setText] = useState('');
     return (
         <View style={styles.container}>
         <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
@@ -19,7 +18,7 @@ function searchScreen(props) {
             icon="file-find" 
             mode="contained" 
             style={styles.button}
-            onPress={() => console.log('Pressed')}>Search</Button>
+            onPress={() => console.log('Pressed',text)}>Search</Button>
         </View>
         </ImageBackground>
         </View>

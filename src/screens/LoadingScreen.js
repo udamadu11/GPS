@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastAndroid, View, Animated, StyleSheet, Image, ActivityIndicator, ImageBackground } from 'react-native';
+import { View, Animated, StyleSheet, Image, ActivityIndicator, ImageBackground } from 'react-native';
 
 
 export default class MyScreen extends Component {
@@ -9,7 +9,7 @@ export default class MyScreen extends Component {
         loadingSpinner: false
     };
 
-    componentDidMount() {
+    componentDidMount({ navigation } = this.props) {
         const { LogoAnime, LogoText } = this.state;
         Animated.parallel([
             Animated.spring(LogoAnime, {
@@ -25,8 +25,8 @@ export default class MyScreen extends Component {
                 loadingSpinner: true
             });
             setTimeout(function () {
-              //  navigation.navigate("Login");
-            }, 1000);
+                navigation.navigate('Dashboard')
+            }, 1500);
         });
     };
 

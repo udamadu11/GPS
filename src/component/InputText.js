@@ -6,26 +6,27 @@ function InputText({icon, ...otherProps}) {
     return (
         <View style={styles.container}>
             {icon && <MaterialComunityIcon name={icon} size={20} color='black' style={styles.icon} />}
-            <TextInput {...otherProps} style={styles.text}/>
+            <TextInput {...otherProps} style={styles.text} />
         </View>
     );
 }
 const styles = StyleSheet.create({
     container:{
         flexDirection:'row',
-        borderRadius:30,
+        borderRadius:10,
         width:'100%',
-        marginVertical:10,
-        padding:10,
-        backgroundColor:'pink',
+        marginVertical:5,
+        padding:5,
+        backgroundColor:'#413c69',
         alignItems:'center',
     },
     icon:{
         marginRight:10,
     },
     text:{
-        color:'black',
-        fontSize:18,
+        color:'white',
+        fontSize:16,
+        padding:5
     }
 })
 export default InputText;

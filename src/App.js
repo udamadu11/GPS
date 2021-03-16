@@ -1,13 +1,13 @@
 import React from 'react';
-import InputText from './component/InputText';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from './navigation/AuthNavigator';
 
 function App() {
     return (
-        <>
-        <InputText placeholder="user Name" icon='email' />
-        <InputText placeholder="user Name" icon='email' />
-        </>
-    )
+        <NavigationContainer>
+            <AuthNavigator />
+        </NavigationContainer>
+    );
 }
 
 export default App;

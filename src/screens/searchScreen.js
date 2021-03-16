@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { TextInput,Button } from 'react-native-paper';
 
-function searchScreen(props) {
+function searchScreen({navigation}) {
     const [text, setText] = useState('');
     return (
         <View style={styles.container}>
@@ -18,7 +18,7 @@ function searchScreen(props) {
             icon="file-find" 
             mode="contained" 
             style={styles.button}
-            onPress={() => console.log('Pressed',text)}>Search</Button>
+            onPress={()=>navigation.navigate('Details')}>Search</Button>
         </View>
         </ImageBackground>
         </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ImageBackground, View ,StyleSheet} from 'react-native';
 import DashboardCard from '../component/DashboardCard';
-function dashboard() {
+function dashboard({navigation}) {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
@@ -10,7 +10,7 @@ function dashboard() {
                                 <DashboardCard 
                                     text="GPS"
                                     name="crosshairs"
-                                    // onPress={()=>navigation.navigate('ViewPassanger')}
+                                    onPress={()=>navigation.navigate('List')}
                                 />
                                 
                             </View>
@@ -18,7 +18,7 @@ function dashboard() {
                                 <DashboardCard
                                     text="Workforce"
                                     name="sitemap"
-                                    // onPress={()=>navigation.navigate('SetDateScreen')}
+                                    onPress={()=>navigation.navigate('List')}
                                 />
                             </View>
                     </View>

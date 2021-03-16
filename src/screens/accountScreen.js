@@ -9,7 +9,8 @@ const MenuItem = [
         icon:{
             name:'account-box',
             backgroundColor:'#F58D2C'
-        }
+        },
+        //targetScreen:'Account'
     },
     {
         title : 'Setting',

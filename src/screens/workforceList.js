@@ -1,8 +1,12 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import {StyleSheet, FlatList, SafeAreaView,Platform,StatusBar, View} from 'react-native';
-import RenderList from '../component/renderList';
 import {firebase} from '../firebase/config';
+import LottieView from 'lottie-react-native'; 
+
+import ActivityIndicator from '../component/ActivityIndicator';
+import RenderList from '../component/renderList';
+
 
 
 let gpsRef = firebase.firestore().collection('workforce')
@@ -10,8 +14,10 @@ let gpsRef = firebase.firestore().collection('workforce')
 
 function workforceList() {
     const[refreshing,setRefresh] = useState(false);
+    
     const [gps,setGps] = useState([]);
     useEffect(() => {
+        setRefresh(true)
         gpsRef
             .onSnapshot(
                 querySnapshot => {
@@ -21,6 +27,7 @@ function workforceList() {
                         newGps.push(entity)
                     });
                     setGps(newGps)
+                    setRefresh(false)
                 },
                 error => {
                     console.log(error)
@@ -30,7 +37,8 @@ function workforceList() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {gps && <FlatList
+            <ActivityIndicator visible={refreshing} />
+            {gps ? <FlatList
                 data={gps}
                 keyExtractor={(gpsList)=>gpsList.cutomer_name}
                 renderItem={({item})=>
@@ -45,6 +53,10 @@ function workforceList() {
                 }
                 refreshing={refreshing}
                 onRefresh={()=>{ gpsRef} }
+            /> : <LottieView 
+                    autoPlay
+                    loop
+                    source={require('../assets/animation/7045-loading-adidi.json')}
             />}
         </SafeAreaView>
     );

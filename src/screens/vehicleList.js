@@ -3,15 +3,16 @@ import { useState,useEffect } from 'react';
 import {StyleSheet, FlatList, SafeAreaView,Platform,StatusBar, View} from 'react-native';
 import RenderList from '../component/renderList';
 import {firebase} from '../firebase/config';
+import ActivityIndicator from '../component/ActivityIndicator';
+import LottieView from 'lottie-react-native'; 
 
-
-let gpsRef = firebase.firestore().collection('gps')
-
+let gpsRef = firebase.firestore().collection('gps');
 
 function vehicleList() {
     const[refreshing,setRefresh] = useState(false);
     const [gps,setGps] = useState([]);
     useEffect(() => {
+        setRefresh(true)
         gpsRef
             .onSnapshot(
                 querySnapshot => {
@@ -21,6 +22,8 @@ function vehicleList() {
                         newGps.push(entity)
                     });
                     setGps(newGps)
+                    setRefresh(false)
+                    
                 },
                 error => {
                     console.log(error)
@@ -30,7 +33,8 @@ function vehicleList() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {gps && <FlatList
+            <ActivityIndicator visible={refreshing} />
+            {gps  ? <FlatList
                 data={gps}
                 keyExtractor={(gpsList)=>gpsList.vehicle_no}
                 renderItem={({item})=>
@@ -43,9 +47,11 @@ function vehicleList() {
                 ItemSeparatorComponent={()=>
                     <View style={{backgroundColor:'#DAF4F5',height:1,width:'90%',marginLeft:10,marginRight:10}}/>
                 }
-                refreshing={refreshing}
-                onRefresh={()=>{ gpsRef} }
-            />}
+            /> : <LottieView
+            autoPlay
+            loop
+            source={require('../assets/animation/8774-loading.json')}
+        />}
         </SafeAreaView>
     );
 }

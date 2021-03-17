@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import { SafeAreaView, ScrollView,StyleSheet,Platform,StatusBar,Text } from 'react-native';
+import { SafeAreaView, ScrollView,StyleSheet,Platform,StatusBar,Text, Modal } from 'react-native';
 import { Caption } from 'react-native-paper';
 import InputText from '../component/InputText';
 import {firebase} from '../firebase/config';
+import emptyScreen from './emptyScreen';
 
-function VehicleDetails({route}) {
+function VehicleDetails({route,navigation}) {
 
     const details = route.params.text;
     let gpsRef = firebase.firestore().collection('gps');
     const [gps,setGps] = useState([]);
-
     
     useEffect(() => {
         gpsRef
@@ -21,8 +21,6 @@ function VehicleDetails({route}) {
                         const entity = doc.data()
                         setGps(entity)
                     });
-                    
-                    console.log(gps)
                 },
                 error => {
                     console.log(error)
@@ -63,7 +61,8 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         paddingTop : Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        padding:10
+        padding:10,
+        marginBottom:20
     },
     scrollview:{
         backgroundColor:'#67ADDB',

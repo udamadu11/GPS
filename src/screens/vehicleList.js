@@ -37,6 +37,7 @@ function vehicleList() {
                 <RenderList
                     title ={item.vehicle_no}
                     subtitle = {item.emei_no}
+                    img={require('../assets/list.png')}
                     onPress={()=> console.log("selected",item.vehicle_no)}
                 />}
                 ItemSeparatorComponent={()=>

@@ -31,7 +31,7 @@ function accountScreen(props) {
                     img = {require('../assets/list.png')}
                 />
             </View>
-            <View style={styles.container}>
+            <View style={styles.container2}>
                 <FlatList 
                     data={MenuItem}
                     keyExtractor={MenuItem => MenuItem.title}
@@ -48,7 +48,7 @@ function accountScreen(props) {
                     }
                 />
             </View>
-            <View style={styles.container}>
+            <View style={styles.container2}>
                 <RenderList 
                     title='Logout'
                     imageComponent={
@@ -65,8 +65,11 @@ function accountScreen(props) {
 
 const styles = StyleSheet.create({
     container:{
-        marginVertical:20,
         backgroundColor:'white'
+    },
+    container2:{
+        backgroundColor:'white',
+        marginVertical:20
     },
     screen:{
        // paddingTop : Platform.OS === 'android' ? StatusBar.currentHeight : 0,

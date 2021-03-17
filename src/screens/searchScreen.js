@@ -8,7 +8,6 @@ function searchScreen({navigation}) {
         <View style={styles.container}>
         <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
             <View style={{flex:1,justifyContent:'center',alignSelf:'center',width:300}}>
-            
             <TextInput
                 label="Search By Vehicle Number"
                 value={text}
@@ -19,7 +18,7 @@ function searchScreen({navigation}) {
             icon="file-find" 
             mode="contained" 
             style={styles.button}
-            onPress={()=>navigation.navigate('Details')}>Search</Button>
+            onPress={()=>navigation.navigate('Details',{text})}>Search</Button>
         </View>
         </ImageBackground>
         </View>

@@ -36,6 +36,7 @@ function workforceList() {
                 renderItem={({item})=>
                 <RenderList
                     title ={item.cutomer_name}
+                    img={require('../assets/list.png')}
                     subtitle = {item.imei_no}
                     onPress={()=> console.log("selected",item.imei_no)}
                 />}

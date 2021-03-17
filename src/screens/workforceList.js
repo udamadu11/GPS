@@ -5,10 +5,10 @@ import RenderList from '../component/renderList';
 import {firebase} from '../firebase/config';
 
 
-let gpsRef = firebase.firestore().collection('gps')
+let gpsRef = firebase.firestore().collection('workforce')
 
 
-function vehicleList() {
+function workforceList() {
     const[refreshing,setRefresh] = useState(false);
     const [gps,setGps] = useState([]);
     useEffect(() => {
@@ -32,12 +32,12 @@ function vehicleList() {
         <SafeAreaView style={styles.container}>
             {gps && <FlatList
                 data={gps}
-                keyExtractor={(gpsList)=>gpsList.vehicle_no}
+                keyExtractor={(gpsList)=>gpsList.cutomer_name}
                 renderItem={({item})=>
                 <RenderList
-                    title ={item.vehicle_no}
-                    subtitle = {item.emei_no}
-                    onPress={()=> console.log("selected",item.vehicle_no)}
+                    title ={item.cutomer_name}
+                    subtitle = {item.imei_no}
+                    onPress={()=> console.log("selected",item.imei_no)}
                 />}
                 ItemSeparatorComponent={()=>
                     <View style={{backgroundColor:'#DAF4F5',height:1,width:'90%',marginLeft:10,marginRight:10}}/>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
         flex:1
     }
 })
-export default vehicleList;
+export default workforceList;

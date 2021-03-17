@@ -8,6 +8,7 @@ function searchScreen({navigation}) {
         <View style={styles.container}>
         <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
             <View style={{flex:1,justifyContent:'center',alignSelf:'center',width:300}}>
+            
             <TextInput
                 label="Search By Vehicle Number"
                 value={text}

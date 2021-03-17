@@ -25,7 +25,7 @@ export default class MyScreen extends Component {
                 loadingSpinner: true
             });
             setTimeout(function () {
-                navigation.navigate('Dashboard')
+                navigation.navigate('AppNavigator')
             }, 1500);
         });
     };

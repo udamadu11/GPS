@@ -10,7 +10,7 @@ function dashboard({navigation}) {
                                 <DashboardCard 
                                     text="GPS"
                                     name="crosshairs"
-                                    onPress={()=>navigation.navigate('List')}
+                                    onPress={()=>navigation.navigate('vehicleList')}
                                 />
                                 
                             </View>
@@ -18,7 +18,7 @@ function dashboard({navigation}) {
                                 <DashboardCard
                                     text="Workforce"
                                     name="sitemap"
-                                    onPress={()=>navigation.navigate('List')}
+                                    onPress={()=>navigation.navigate('workforceList')}
                                 />
                             </View>
                     </View>

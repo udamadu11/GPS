@@ -11,6 +11,7 @@ const dashboardNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Search' component={searchScreen} options={{headerShown:false}}/>
         <Stack.Screen name='Details' component={vehicleDetails} options={{headerShown:false}}/>
+        <Stack.Screen name='EmptyScreen' component={emptyScreen} options={{headerShown:false}}/>
     </Stack.Navigator>
 )
 

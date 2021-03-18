@@ -4,7 +4,6 @@ import { SafeAreaView, ScrollView,StyleSheet,Platform,StatusBar,Text, Modal } fr
 import { Caption } from 'react-native-paper';
 import InputText from '../component/InputText';
 import {firebase} from '../firebase/config';
-import emptyScreen from './emptyScreen';
 
 function VehicleDetails({route,navigation}) {
 

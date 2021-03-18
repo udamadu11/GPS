@@ -1,9 +1,11 @@
-import React,{ useState } from 'react';
+import React,{ useState} from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { TextInput,Button } from 'react-native-paper';
 
 function searchScreen({navigation}) {
     const [text, setText] = useState('');
+
+   
     return (
         <View style={styles.container}>
         <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
@@ -18,7 +20,7 @@ function searchScreen({navigation}) {
             icon="file-find" 
             mode="contained" 
             style={styles.button}
-            onPress={()=>navigation.navigate('Details',{text})}>Search</Button>
+            onPress={()=>navigation.navigate("Details",{text})}>Search</Button>
         </View>
         </ImageBackground>
         </View>

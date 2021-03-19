@@ -5,14 +5,6 @@ import RenderList from '../component/renderList';
 import {firebase} from '../firebase/config';
 const MenuItem = [
     {
-        title : 'My Account',
-        icon:{
-            name:'account-box',
-            backgroundColor:'#F58D2C'
-        },
-        //targetScreen:'Account'
-    },
-    {
         title : 'Setting',
         icon:{
             name:'cog-outline',

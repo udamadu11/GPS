@@ -4,6 +4,7 @@ import { TextInput,Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import {firebase} from '../firebase/config';
 
+
 function SignUp({navigation}) {
     const [email , setText] = useState('');
     const [password , setPass] = useState('');
@@ -79,11 +80,11 @@ function SignUp({navigation}) {
                         <View style={styles.textOr}> 
                             <Text style={{color:'#797979'}}>OR</Text>
                         </View>
-                        <View style={styles.icon}>
+                        {/* <View style={styles.icon}>
                             <Image source={require('../assets/facebook.png')} style={styles.logo} />
-                            <Image source={require('../assets/search.png')} style={styles.logo} />
+                                <Image source={require('../assets/search.png')} style={styles.logo}/>
                             <Image source={require('../assets/twitter.png')} style={styles.logo} />
-                        </View>
+                        </View> */}
                         <TouchableOpacity style={styles.signIn} onPress={()=>navigation.navigate("SignIn")}> 
                                 <Text style={{color:'#797979'}}>You have an Account ? Sign in</Text>
                         </TouchableOpacity>
@@ -113,19 +114,18 @@ const styles = StyleSheet.create({
     textOr:{
         justifyContent:'center',
         alignItems:'center',
-        marginTop:10,
-        marginBottom:10
+        marginTop:20,
     },
     icon:{
         justifyContent:'center',
         alignItems:'center',
         flexDirection:'row',
     },
-    logo:{
-        width:40,
-        height:40,
-        marginHorizontal:10
-    },
+    // logo:{
+    //     width:40,
+    //     height:40,
+    //     marginHorizontal:10
+    // },
     signIn:{
         justifyContent:'center',
         alignItems:'center',

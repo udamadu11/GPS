@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
-import {ImageBackground, View ,StyleSheet, Text, Image} from 'react-native';
+import {ImageBackground, View ,StyleSheet, Text, Image, Alert,TouchableOpacity} from 'react-native';
 import { TextInput,Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
-function SignUp() {
-    const [text , setText] = useState('');
+import {firebase} from '../firebase/config';
+
+function SignUp({navigation}) {
+    const [email , setText] = useState('');
     const [password , setPass] = useState('');
     const [Cpassword , setSpassword] = useState('');
+
+    const Signup = async () =>{
+        try{
+            if(password == Cpassword){
+                const response = await firebase.auth().createUserWithEmailAndPassword(email,password)
+                .then(() => {
+                    console.log('Account Create!');
+                    navigation.navigate('SignIn');
+                })
+            }else{
+                Alert.alert("Password is not Match ...");
+            }
+           
+        }catch(error){
+            if (error.code === 'auth/email-already-in-use') {
+                console.log('That email address is already in use!');
+              }
+          
+              if (error.code === 'auth/invalid-email') {
+                console.log('That email address is invalid!');
+              }
+          
+              console.error(error);
+        }
+    }
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
@@ -20,7 +48,7 @@ function SignUp() {
                     />
                     <TextInput
                         label="Email"
-                        value={text}
+                        value={email}
                         onChangeText={text => setText(text)}
                         mode='outlined'
                         textContentType='emailAddress'
@@ -45,6 +73,7 @@ function SignUp() {
                         icon="account-multiple-plus" 
                         mode="contained" 
                         style={styles.button}
+                        onPress={()=>Signup()}
                         >Sign Up</Button>
 
                         <View style={styles.textOr}> 
@@ -55,10 +84,9 @@ function SignUp() {
                             <Image source={require('../assets/search.png')} style={styles.logo} />
                             <Image source={require('../assets/twitter.png')} style={styles.logo} />
                         </View>
-                        <View style={styles.signIn}> 
-                            <Text style={{color:'#797979'}}>Already have an Account ? </Text>
-                            <Text>Sign In</Text>
-                        </View>
+                        <TouchableOpacity style={styles.signIn} onPress={()=>navigation.navigate("SignIn")}> 
+                                <Text style={{color:'#797979'}}>You have an Account ? Sign in</Text>
+                        </TouchableOpacity>
                 </View>
             </ImageBackground>
         </View>
@@ -94,8 +122,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
     logo:{
-        width:45,
-        height:45,
+        width:40,
+        height:40,
         marginHorizontal:10
     },
     signIn:{

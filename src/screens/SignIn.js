@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
-import {ImageBackground, View ,StyleSheet, Text, Image} from 'react-native';
+import {ImageBackground, View ,StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import { TextInput,Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
+import {firebase} from '../firebase/config';
 
-function SignIn(props) {
-        const [text , setText] = useState('');
+function SignIn({navigation}) {
+        const [email , setText] = useState('');
         const [password , setPass] = useState('');
-        const [Cpassword , setSpassword] = useState('');
+
+        const signin = async () =>{
+            try{
+                const response = firebase.auth().signInWithEmailAndPassword(email,password)
+                .then(() => {
+                    console.log('Login');
+                    navigation.navigate("AppNavigator");
+                })
+            }catch(error){
+                console.error(error);
+            }
+        }
+
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
@@ -21,7 +34,7 @@ function SignIn(props) {
                         />
                         <TextInput
                             label="Email"
-                            value={text}
+                            value={email}
                             onChangeText={text => setText(text)}
                             mode='outlined'
                             textContentType='emailAddress'
@@ -39,6 +52,7 @@ function SignIn(props) {
                             icon="login" 
                             mode="contained" 
                             style={styles.button}
+                            onPress={()=>signin()}
                             >Sign In</Button>
     
                             <View style={styles.textOr}> 
@@ -49,10 +63,9 @@ function SignIn(props) {
                                 <Image source={require('../assets/search.png')} style={styles.logo} />
                                 <Image source={require('../assets/twitter.png')} style={styles.logo} />
                             </View>
-                            <View style={styles.signIn}> 
-                                <Text style={{color:'#797979'}}>Don't have an Account ? </Text>
-                                <Text>Sign Up</Text>
-                            </View>
+                            <TouchableOpacity style={styles.signIn} onPress={()=>navigation.navigate("SignUp")}> 
+                                <Text style={{color:'#797979'}}>Don't have an Account ? Sign Up</Text>
+                            </TouchableOpacity>
                     </View>
                 </ImageBackground>
             </View>

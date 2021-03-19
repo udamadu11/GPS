@@ -2,7 +2,7 @@ import React from 'react';
 import { View,StyleSheet,Platform,StatusBar, FlatList} from 'react-native';
 import Icon from '../component/icon';
 import RenderList from '../component/renderList';
-
+import {firebase} from '../firebase/config';
 const MenuItem = [
     {
         title : 'My Account',
@@ -22,6 +22,13 @@ const MenuItem = [
 ];
 
 function accountScreen(props) {
+    const logout = async () =>{
+        try{
+            const response = firebase.auth().signOut();
+        }catch(error){
+            console.error(error);
+        }
+    }
     return (
         <View style={styles.screen}>
             <View style={styles.container}>
@@ -57,6 +64,7 @@ function accountScreen(props) {
                             backgroundColor='#DE3352'
                             size={60}
                         />}
+                    onPress={()=>logout()}
                     />
             </View>
         </View>

@@ -26,6 +26,7 @@ function App() {
         <NavigationContainer>
            {user ? <AppNavigator /> : <AuthNavigator />}
         </NavigationContainer>
+        // <AddVehicle />
         
     );
 }

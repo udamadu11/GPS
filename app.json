@@ -1,4 +1,5 @@
 {
   "name": "DimoGps",
-  "displayName": "DimoGps"
+  "displayName": "DimoGps",
+  "icon" : "./src/assets/DIMO_Logo.jpg"
 }

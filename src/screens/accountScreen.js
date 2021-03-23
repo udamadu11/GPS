@@ -26,7 +26,7 @@ function accountScreen(props) {
             <View style={styles.container}>
                 <RenderList 
                     title='Udara Madumalka'
-                    subtitle='Madu12dara@gmail.com'
+                    subtitle='Madu@gmail.com'
                     img = {require('../assets/list.png')}
                 />
             </View>

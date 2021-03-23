@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './navigation/AuthNavigator';
 import {firebase} from './firebase/config';
 import AppNavigator from './navigation/AppNavigator';
+import AddVehicle from './screens/addVehicle';
 
 function App() {
     const [initializing, setInitializing] = useState(true);
@@ -25,6 +26,7 @@ function App() {
         <NavigationContainer>
            {user ? <AppNavigator /> : <AuthNavigator />}
         </NavigationContainer>
+        
     );
 }
 

@@ -52,7 +52,6 @@ function workforceList() {
                     <View style={{backgroundColor:'#DAF4F5',height:1,width:'90%',marginLeft:10,marginRight:10}}/>
                 }
                 refreshing={refreshing}
-                onRefresh={()=>{ gpsRef} }
             /> : <LottieView 
                     autoPlay
                     loop

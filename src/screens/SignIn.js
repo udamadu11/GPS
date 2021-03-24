@@ -13,7 +13,6 @@ function SignIn({navigation}) {
                 const response = firebase.auth().signInWithEmailAndPassword(email,password)
                 .then(() => {
                     console.log('Login');
-                    navigation.navigate("AppNavigator");
                 })
             }catch(error){
                 console.error(error);

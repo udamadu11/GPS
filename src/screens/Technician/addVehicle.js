@@ -3,7 +3,7 @@ import { ScrollView, Text, View,StyleSheet, SafeAreaView ,ImageBackground,Alert}
 import { TextInput,Button } from 'react-native-paper';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {firebase} from '../firebase/config';
+import {firebase} from '../../firebase/config';
 
 
 let gpsRef = firebase.firestore().collection('gps');
@@ -53,7 +53,7 @@ function addVehicle(props) {
         }
 
     }
-    const handleSubmit = async(values) =>{
+    const handleSubmit = (values) =>{
         checkTextInput(values);
         gpsRef.doc(`${values.vehicleNo}`).set({
             vehicle_no:values.vehicleNo,
@@ -74,7 +74,7 @@ function addVehicle(props) {
    
     return (
         <SafeAreaView style={styles.container}>
-            <ImageBackground source={require('../assets/1.png')} style={styles.backgroundImage}>
+            <ImageBackground source={require('../../assets/1.png')} style={styles.backgroundImage}>
             <View style={{justifyContent:'center',alignSelf:'center',width:300}}>
                 <Formik
                 initialValues={{vehicleNo:"", emeiNo:"", comapanyName:"",installDate:"", installBy:"", sensorName:""}}

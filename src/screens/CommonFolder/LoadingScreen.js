@@ -33,7 +33,7 @@ export default class MyScreen extends Component {
    render() {
      return (
         <View style={styles.container}>
-        <ImageBackground source={require('../assets/2.png')} style={styles.backgroundImage} >
+        <ImageBackground source={require('../../assets/2.png')} style={styles.backgroundImage} >
             <Animated.View
                 style={{
                     opacity: this.state.LogoAnime,
@@ -42,7 +42,7 @@ export default class MyScreen extends Component {
                         outputRange: [80, 0],
                     }),
                 }}>
-                <Image source={require('../assets/logo.png')} style={styles.logo} />
+                <Image source={require('../../assets/logo.png')} style={styles.logo} />
             </Animated.View>
             <Animated.View>
                 <ActivityIndicator size="large" color="#fff" style={{ marginTop: 40 }} />

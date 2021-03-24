@@ -1,9 +1,10 @@
 import React from 'react';
 import {View,StyleSheet, Image, Text, TouchableHighlight} from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-function renderList({img,imageComponent,title,subtitle,onPress}) {
+function renderList({img,imageComponent,title,subtitle,onPress,renderRightActions}) {
     return (
-        <TouchableHighlight onPress={onPress} underlayColor='#DAF4F5'>
+        <TouchableHighlight onPress={onPress} underlayColor='#DAF4F5' renderRightActions={renderRightActions}>
             <View style={styles.container}>
                 {imageComponent}
                {img && <Image source={img} style={styles.imageStyle} />}

@@ -7,7 +7,6 @@ import {firebase} from '../../firebase/config';
 
 function updateList({route,navigation}) {
     const details = route.params.vehicle_no;
-    console.log(details);
     let gpsRef = firebase.firestore().collection('gps');
     const [gps,setGps] = useState([]);
     
@@ -27,7 +26,7 @@ function updateList({route,navigation}) {
             )
     }, []);
 
-    const alertShow = () =>{
+    const alertShowOne = () =>{
         Alert.alert(
             "Delete",
             "Are you Sure you Want to Delete this ?",
@@ -50,6 +49,7 @@ function updateList({route,navigation}) {
             console.error("Error removing document: ", error);
         });
     }
+    
     return (
         <SafeAreaView style={styles.container}>
         <ScrollView style={styles.containerscrollview}>
@@ -69,17 +69,13 @@ function updateList({route,navigation}) {
             <Caption style={styles.caption}>Installation By</Caption>
             <InputText>{gps.install_by}</InputText>
             <View style={styles.buttonSection}>
+                
                 <Button 
-                icon="update" 
-                mode="contained" 
-                style={styles.button}
-                >update</Button>
-                <Button 
-                icon="delete" 
-                mode="contained" 
-                style={[styles.button,{backgroundColor:'#e9896a'}]}
-                onPress={alertShow}
-                >Delete</Button>
+                    icon="delete" 
+                    mode="contained" 
+                    style={[styles.button,{backgroundColor:'#e9896a'}]}
+                    onPress={alertShowOne}
+                    >Delete</Button>
             </View>
         </ScrollView>
     </SafeAreaView>
@@ -101,9 +97,8 @@ const styles = StyleSheet.create({
         padding:5
     },
     button:{
-        marginVertical:10,
         backgroundColor:'#387c6d',
-        marginHorizontal:10
+        width:200
         
     },
     buttonSection:{

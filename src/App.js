@@ -8,32 +8,32 @@ import ListItem from './screens/Technician/listItem';
 import Temp from './navigation/temp';
 
 function App() {
-    // const [initializing, setInitializing] = useState(true);
-    // const [user, setUser] = useState();
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
 
-    // function onAuthStateChanged(user) {
-    //     setUser(user);
-    //     if (initializing) setInitializing(false);
-    //   }
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+      }
     
-    //   useEffect(() => {
-    //     const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
-    //     return subscriber; 
-    //   }, []);
+      useEffect(() => {
+        const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; 
+      }, []);
     
-    //   if (initializing) return null;
+      if (initializing) return null;
     
 
     return (
-        // <NavigationContainer>
-        //    {user ? <AppNavigator /> : <AuthNavigator />}
-        // </NavigationContainer>
+        <NavigationContainer>
+           {user ? <AppNavigator /> : <AuthNavigator />}
+        </NavigationContainer>
         // <AddVehicle />
         // <ListItem />
 
-        <NavigationContainer>
-          <Temp />
-        </NavigationContainer>
+        // <NavigationContainer>
+        //   <Temp />
+        // </NavigationContainer>
         
     );
 }
